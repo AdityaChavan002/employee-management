@@ -1,0 +1,586 @@
+
+===== SLIDE 1 =====
+CLIENT PRESENTATION  •  UI PLAN
+Healthcare, made
+simple to navigate.
+Doctor Appointment Booking Platform
+Experience plan • Patient, doctor & public journeys
+A proposed UI walkthrough from discovery to care
+Prepared from the current project prototype • For client review
+HEALTHCARE CONNECT
+Find the right care,
+close to home.
+Doctor, specialty or location
+Dr. Priya Sharma
+Cardiologist  •  4.9 ★
+Appointments available
+EXPLORE CARE
+
+===== SLIDE 2 =====
+01 / THE OPPORTUNITY
+One connected experience for finding and booking care
+The UI plan turns the current React prototype into a clear, role-aware patient and doctor experience.
+For patients
+Discover doctors, compare profiles, choose Phone / Clinic / Home Visit, pay and track appointments.
+For doctors
+Create a professional profile, submit registration details, follow verification and manage practice availability.
+For public visitors
+Understand the service, browse doctors and policies, then choose whether to create an account.
+SOURCE NOTE / APPROVAL DEPENDENCY
+The requested proposal PDF and 20-screen reference image were not available. This working plan is mapped from the existing project only; reconcile proposal scope, screen inventory and visual direction against those client sources before sign-off.
+HEALTHCARE CONNECT  /  UI PLAN  •  WORKING DRAFT
+02
+
+===== SLIDE 3 =====
+02 / WHO USES IT
+Three audiences, one consistent care journey
+Role-specific navigation keeps the right actions visible while public information remains easy to reach.
+Patient
+Primary goal
+Book appropriate care with confidence.
+
+Key areas
+Doctor discovery • booking • payment • appointments
+
+Access
+Patient account for booking and appointment history.
+Doctor
+Primary goal
+Join the network and manage a practice profile.
+
+Key areas
+Onboarding • verification • dashboard • availability • profile
+
+Access
+Doctor account and protected doctor workspace.
+Public user
+Primary goal
+Explore the service before committing.
+
+Key areas
+Home • search • doctor profiles • about • policies
+
+Access
+No account required for public information and discovery.
+Access rule: a signed-in user is directed to the relevant patient or doctor experience; protected areas prompt sign-in.
+HEALTHCARE CONNECT  /  UI PLAN  •  WORKING DRAFT
+03
+
+===== SLIDE 4 =====
+03 / PATIENT EXPERIENCE
+Patient journey: from need to follow-up
+The patient can start as a public visitor; sign-in is required when moving into protected booking actions.
+1
+Discover
+Search by doctor,
+specialty or area
+›
+2
+Compare
+Review experience,
+fees and availability
+›
+3
+Choose care
+Select service, slot
+and patient details
+›
+4
+Pay securely
+Razorpay hand-off;
+result returns to app
+›
+5
+Stay informed
+See confirmation
+and appointment list
+Patient use cases
+Find/filter a doctor • view qualifications and services • book for self or another patient • add an optional note • pay • revisit upcoming or past appointments.
+Journey guardrails
+Keep price and visit type visible • preserve booking progress • validate required details inline • provide recovery for no results, unavailable slots or failed payment.
+HEALTHCARE CONNECT  /  UI PLAN  •  WORKING DRAFT
+04
+
+===== SLIDE 5 =====
+04 / DOCTOR EXPERIENCE
+Doctor journey: onboarding to an active practice
+Doctor onboarding remains a multi-step flow, with status and next actions made clear at each stage.
+1
+Create account
+Choose Doctor role;
+verify contact
+›
+2
+Build profile
+Personal + clinical
+details in steps
+›
+3
+Verify identity
+Registration info
+and documents
+›
+4
+Review status
+See timeline, date
+and next action
+›
+5
+Manage practice
+Dashboard, profile
+and availability
+Doctor use cases
+Register • describe specialty and qualifications • submit council details and supporting documents • follow verification • understand joining-fee next steps • edit profile and working hours.
+Onboarding principle
+Show step count, save/continue and back actions; explain document requirements and verification timing; never imply a profile is approved until the review outcome is confirmed.
+HEALTHCARE CONNECT  /  UI PLAN  •  WORKING DRAFT
+05
+
+===== SLIDE 6 =====
+05 / AUTHENTICATION
+A shared sign-in foundation for both account types
+Patient and doctor entry points can share form patterns while keeping role, access and next destination explicit.
+1
+Choose role
+Patient or Doctor;
+public browsing stays open
+›
+2
+Sign up / sign in
+Credentials, consent
+and field feedback
+›
+3
+Verify email
+Six-digit code;
+resend + error state
+›
+4
+Continue to role area
+Patient: appointments
+Doctor: onboarding
+Account recovery
+Forgot password → enter email → neutral confirmation → return to sign-in. Avoid disclosing whether an email is registered.
+Role-aware access
+Direct links to protected booking or doctor pages retain the intended destination after sign-in. Sign-out returns to public browsing.
+Prototype note: current auth is a demo; production identity, OTP delivery, password reset and session security require backend services.
+HEALTHCARE CONNECT  /  UI PLAN  •  WORKING DRAFT
+06
+
+===== SLIDE 7 =====
+06 / BOOKING
+One guided booking flow, three ways to meet
+Booking is a multi-step journey. Appointment type is chosen first; the remaining steps adapt to the selected service.
+Phone
+Remote consultation
+Confirm the contact number
+Join/call instructions to confirm
+Clinic Visit
+In-person appointment
+Show clinic address and arrival details
+Availability by doctor
+Home Visit
+Care at the patient’s address
+Capture service location and coverage
+Confirm availability and any terms
+1
+Type
+Phone / clinic /
+home
+›
+2
+Date & time
+Available slots;
+prevent stale choice
+›
+3
+Patient details
+Name, phone, email;
+optional note
+›
+4
+Review
+Doctor, fee, visit
+and contact summary
+Then continue to payment → confirmation. Keep a clear Back action and preserve completed answers when moving between steps.
+HEALTHCARE CONNECT  /  UI PLAN  •  WORKING DRAFT
+07
+
+===== SLIDE 8 =====
+07 / PAYMENT
+Patient payment: a clear hand-off to Razorpay
+Show the amount and appointment summary before the customer leaves the booking experience.
+1
+Review total
+Doctor, service, slot
+and fee are visible
+›
+2
+Open Razorpay
+UPI / card / net banking;
+secure gateway
+›
+3
+Payment result
+Success, pending,
+cancelled or failed
+›
+4
+Confirm booking
+Persist confirmed visit;
+show reference
+UI responsibilities
+Explain amount • indicate processing • prevent accidental duplicate action • show a recoverable failure • never display success until the verified result is returned.
+Integration boundary
+The prototype uses a simulated payment service. Live Razorpay checkout, server-side order creation, signature verification, webhooks and refunds need backend agreement.
+Client confirmation: payment timing, cancellation/refund policy, supported methods and whether any doctor joining fee uses Razorpay.
+HEALTHCARE CONNECT  /  UI PLAN  •  WORKING DRAFT
+08
+
+===== SLIDE 9 =====
+08 / DOCTOR VERIFICATION
+A transparent review journey builds trust
+The interface communicates progress; the verification decision remains with the agreed review process.
+1
+Details submitted
+Personal and
+professional profile
+›
+2
+Documents received
+Proof of registration,
+identity and photo
+›
+3
+Registration review
+Manual or approved
+service review
+›
+4
+Outcome shared
+Approved, more info
+needed or declined
+Status timeline
+Completed, in review and upcoming stages; last-updated date; next expected action.
+Doctor actions
+Refresh status, correct missing information, re-upload requested evidence and contact support.
+Trust boundary
+Approval badges and discoverability must only reflect a verified backend status.
+HEALTHCARE CONNECT  /  UI PLAN  •  WORKING DRAFT
+09
+
+===== SLIDE 10 =====
+09 / INFORMATION ARCHITECTURE
+Route families keep the experience easy to understand
+Twenty proposed primary screens/routes are grouped by audience and task; a route is not necessarily a separate page.
+Public discovery
+Home  •  Search  •  Doctor profile
+About  •  Policies
+Identity & booking
+Patient / Doctor sign-in  •  Sign-up
+OTP  •  Password reset  •  Booking
+Patient care
+Razorpay hand-off  •  Confirmation
+Appointments
+Doctor workspace
+Onboarding  •  Verification  •  Joining info
+Dashboard  •  Availability  •  Edit profile
+20 proposed primary screens/routes • doctor sign-in is a role-specific view of shared sign-in • 404 is a shared recovery state, not part of the 20.
+HEALTHCARE CONNECT  /  UI PLAN  •  WORKING DRAFT
+10
+
+===== SLIDE 11 =====
+10 / PROPOSED PRIMARY SCREENS
+Twenty proposed primary screens/routes
+Working inventory mapped from the existing project. Confirm names, priorities and visual content against the proposal and reference image.
+01
+Home
+/
+Introduce the service and guide people into doctor discovery or doctor registration.
+KEY UI  Care promise • search entry • service choices • featured doctors • join as a doctor
+02
+Doctor search
+/search
+Help visitors find suitable doctors and compare options.
+KEY UI  Search by name/specialty/location • specialty filter • results • loading, no-result and error feedback
+03
+Doctor profile
+/doctors/:doctorId
+Support an informed choice before starting a booking.
+KEY UI  Verified status • credentials • experience • rating • services/fee • location • availability • book CTA
+04
+About / support
+/about
+Explain the service and give visitors a route to help.
+KEY UI  Service overview • trust cues • contact/support route • pathways for patients and doctors
+05
+Policies
+/policies
+Make service, privacy and terms information discoverable.
+KEY UI  Terms • privacy • booking/cancellation policy links and readable content hierarchy
+HEALTHCARE CONNECT  /  UI PLAN  •  WORKING DRAFT
+11
+
+===== SLIDE 12 =====
+10 / PROPOSED PRIMARY SCREENS
+Twenty proposed primary screens/routes
+Working inventory mapped from the existing project. Confirm names, priorities and visual content against the proposal and reference image.
+06
+Patient sign-in
+/login
+Return a patient to protected booking and appointment services.
+KEY UI  Email/password • remember option • reset link • validation/loading/error • create-account link
+07
+Patient sign-up
+/signup
+Create a patient account with clear consent and field guidance.
+KEY UI  Name • email • phone • password/confirmation • terms consent • inline validation
+08
+Email verification
+/verify-otp
+Confirm the account contact before proceeding.
+KEY UI  Six-digit code • resend • attempt feedback • success state • continue to patient area
+09
+Password reset
+/reset-password
+Help an existing user safely regain access.
+KEY UI  Email entry • neutral sent confirmation • return to sign-in
+10
+Doctor sign-in
+/login?role=doctor
+Give doctors a distinct entry context into the same shared sign-in UI.
+KEY UI  Doctor-selected role • credentials • recovery • protected doctor destination
+HEALTHCARE CONNECT  /  UI PLAN  •  WORKING DRAFT
+12
+
+===== SLIDE 13 =====
+10 / PROPOSED PRIMARY SCREENS
+Twenty proposed primary screens/routes
+Working inventory mapped from the existing project. Confirm names, priorities and visual content against the proposal and reference image.
+11
+Booking (multi-step)
+/booking/:doctorId
+Collect appointment choices progressively without losing the draft.
+KEY UI  Visit type • date/slot • patient/contact details • optional note • review • step progress
+12
+Razorpay checkout
+/payment → gateway
+Collect payment for the reviewed patient appointment.
+KEY UI  Appointment summary • total • gateway hand-off • processing / success / failure return
+13
+Booking confirmation
+/booking/confirmation
+Reassure the patient that the booking is recorded.
+KEY UI  Confirmed status • doctor • visit type • date/time • location/instructions • reference
+14
+Patient appointments
+/appointments
+Let patients revisit upcoming and past care.
+KEY UI  Upcoming/past tabs • appointment cards • status • fee • empty/loading/error states
+15
+Doctor onboarding (multi-step)
+/doctor/onboarding
+Capture a doctor profile and verification information in stages.
+KEY UI  Personal • professional • registration • document steps • progress • validation • submit success
+HEALTHCARE CONNECT  /  UI PLAN  •  WORKING DRAFT
+13
+
+===== SLIDE 14 =====
+10 / PROPOSED PRIMARY SCREENS
+Twenty proposed primary screens/routes
+Working inventory mapped from the existing project. Confirm names, priorities and visual content against the proposal and reference image.
+16
+Verification status
+/doctor/verification
+Explain where a submitted registration stands and what happens next.
+KEY UI  Review badge • timeline • updated date • refresh • help and next action
+17
+Joining-fee information
+/doctor/joining-fee
+Present confirmed activation/payment information to the doctor.
+KEY UI  Fee and terms only when approved • verification state • secure payment route if in scope
+18
+Doctor dashboard
+/doctor/dashboard
+Provide a concise overview of a doctor's practice activity.
+KEY UI  Appointment summary • key stats • profile completion • verification status • shortcuts
+19
+Availability management
+/doctor/availability
+Let a doctor manage working days and bookable time slots.
+KEY UI  Calendar • weekly schedule • time slots • save feedback • unavailable/validation states
+20
+Doctor profile edit
+/doctor/profile/edit
+Allow a doctor to maintain the public-facing practice profile.
+KEY UI  Identity • credentials • specialty • services • practice details • save/cancel feedback
+HEALTHCARE CONNECT  /  UI PLAN  •  WORKING DRAFT
+14
+
+===== SLIDE 15 =====
+11 / INTERACTION STATES
+Design the moments around the happy path
+Every data-dependent screen needs feedback before, during and after a user action.
+Loading
+Skeletons or clear progress; prevent duplicate submit; keep context visible.
+Validation
+Field-level guidance, accessible error text and a clear next step.
+Empty
+Explain why nothing is shown and offer a useful action (search again / book).
+Success
+Confirm what happened, show a reference where relevant and link to next action.
+Error
+Say what failed, preserve user input and offer retry or support.
+High-risk moments to review: slot becomes unavailable • OTP invalid/expired • upload rejected • verification needs more information • payment pending or failed.
+HEALTHCARE CONNECT  /  UI PLAN  •  WORKING DRAFT
+15
+
+===== SLIDE 16 =====
+12 / RESPONSIVE UI
+One experience, tuned for desktop, tablet and mobile
+Content order, controls and navigation adapt to screen size; functionality remains consistent.
+Desktop
+Wide layouts
+
+Two-column search/profile/booking panels
+Persistent summaries and full doctor workspace
+Top navigation + visible context
+Tablet
+Flexible layouts
+
+Cards reflow into fewer columns
+Booking summary moves below steps
+Doctor workspace navigation can compact
+Mobile
+Focused layouts
+
+Single-column content and touch targets
+Step-by-step booking; sticky primary action
+Collapsible navigation; readable status cards
+Breakpoints and exact mobile patterns will be validated against the supplied visual reference before high-fidelity UI approval.
+HEALTHCARE CONNECT  /  UI PLAN  •  WORKING DRAFT
+16
+
+===== SLIDE 17 =====
+13 / REUSABLE UI
+Build consistency from shared React building blocks
+Reusable components keep common interactions predictable and make approved visual updates easier to apply.
+Foundation
+Button • Field • Card • Badge
+Icon • PageIntro • EmptyState
+Care patterns
+DoctorCard / DoctorAvatar
+Appointment summary • status timeline
+Flow patterns
+Stepper • date/time picker
+Review panel • payment result
+Layouts
+Public header/footer
+Doctor workspace navigation
+Responsive auth frame
+React implementation at a glance: shared components + role-specific layouts + route-level screens + service calls. Avoid building every route as a one-off.
+HEALTHCARE CONNECT  /  UI PLAN  •  WORKING DRAFT
+17
+
+===== SLIDE 18 =====
+14 / FRONTEND ARCHITECTURE
+Clear route boundaries, shared services
+The current app uses React, React Router and a shared authentication context; API-backed services are an integration point.
+1  ROUTES
+Public discovery  •  Auth  •  Patient  •  Doctor
+2  LAYOUTS
+Public shell  •  Auth frame  •  Doctor workspace
+3  SHARED UI
+Components  •  Forms  •  Booking stepper  •  Status patterns
+4  SERVICES
+Auth  •  Doctor search  •  Appointments  •  Payments  •  Verification
+5  SERVER APIs
+Production accounts, data, payments, documents and notifications
+Current prototype services are mocked and browser storage is used for demo state; connect the agreed backend before production.
+HEALTHCARE CONNECT  /  UI PLAN  •  WORKING DRAFT
+18
+
+===== SLIDE 19 =====
+15 / RESPONSIBILITY BOUNDARY
+The interface guides the journey; the backend owns trusted outcomes
+Agree contracts early so the frontend can show accurate status without becoming the source of truth.
+Frontend / React
+Render routes, layouts and responsive UI
+Collect and validate user input
+Manage local interaction and step progress
+Call APIs and show loading / empty / error / success
+Display verified server status and payment result
+Provide accessible, recoverable user journeys
+Backend / services
+Authenticate users and enforce roles
+Own doctor, schedule and appointment records
+Prevent slot conflicts and confirm booking
+Create Razorpay orders and validate callbacks
+Securely store documents and review decisions
+Send OTPs, email/SMS updates and reminders
+The existing prototype does not demonstrate a production API, live Razorpay integration, real OTP delivery or verification provider.
+HEALTHCARE CONNECT  /  UI PLAN  •  WORKING DRAFT
+19
+
+===== SLIDE 20 =====
+16 / SCOPE ALIGNMENT
+Proposed UI coverage and boundaries to confirm
+The proposal PDF was unavailable, so the items below are a working UI interpretation—not a contractual scope statement.
+Proposed frontend UI coverage
+Public discovery and doctor profiles
+Patient account and guided booking
+Phone, Clinic Visit and Home Visit selection
+Payment hand-off and appointment result
+Doctor onboarding and verification status
+Doctor workspace, availability and profile
+Responsive layouts and interaction states
+Not represented in the current prototype
+Production authentication / OTP delivery
+Live doctor catalogue, scheduling or APIs
+Razorpay server integration and reconciliation
+Medical-registration verification service
+Secure file storage and document review tools
+Email/SMS, cancellation, refunds or rescheduling
+Admin operations and reporting workflows
+These are unconfirmed integrations / capabilities, not declared exclusions. Reconcile every item against the proposal before estimating or approving scope.
+HEALTHCARE CONNECT  /  UI PLAN  •  WORKING DRAFT
+20
+
+===== SLIDE 21 =====
+17 / CLIENT DECISIONS
+Inputs needed to finalize the UI plan
+Resolving these items before detailed frontend build avoids assumptions in money, eligibility and care operations.
+Brand & reference
+Provide the proposal PDF and 20-screen image; confirm logo, colours, typography and any screen ordering.
+Patient rules
+Confirm supported cities, search filters, visit eligibility, slot rules and home-visit coverage.
+Payments
+Confirm patient fee composition, Razorpay flow, payment timing, refunds/cancellations and joining-fee policy.
+Doctor review
+Confirm required credentials/documents, review owner, statuses, SLA and correction/resubmission process.
+Operations
+Confirm notifications, support contact, appointment changes and any admin tools in scope.
+Legal & accessibility
+Approve policy copy, consent, privacy wording, languages and accessibility requirements.
+HEALTHCARE CONNECT  /  UI PLAN  •  WORKING DRAFT
+21
+
+===== SLIDE 22 =====
+18 / DECISION & NEXT STEP
+Client Review & UI Sign-Off
+Please confirm the following before frontend development continues:
+✓
+The 20 proposed primary screens/routes and multi-step Booking / Doctor Onboarding journeys
+✓
+Patient, Doctor and Public User roles, route access and end-to-end flows
+✓
+Phone, Clinic Visit and Home Visit booking rules; payment and Razorpay assumptions
+✓
+Doctor verification stages, required evidence, statuses and joining-fee treatment
+✓
+Responsive behavior, loading/validation/empty/success/error states and visual direction
+✓
+Proposal scope, integrations, exclusions and client-provided content — checked against source PDF
+APPROVED BY  __________________________     DATE  ______________     NOTES  __________________________
+Approval confirms the UI plan only; proposal and source-reference alignment remains a prerequisite.
+22
